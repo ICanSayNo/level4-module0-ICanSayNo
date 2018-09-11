@@ -56,10 +56,10 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				Random rand = new Random();
 				int number = rand.nextInt(2);
 				if (number == 1) {
-					Cell[cellsUpward].isAlive = true;
+					Cell[j].isAlive = true;
 				}
 				else {
-					cellsUpward.isAlive = false;
+					Cell[j].isAlive = false;
 				}
 			}
 		}
