@@ -1,6 +1,7 @@
 package _03_Conways_Game_of_Life;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Cell implements Drawable{
 	public boolean isAlive = false;
@@ -44,11 +45,15 @@ public class Cell implements Drawable{
 	//    draws empty square if cell is dead
 	@Override
 	public void draw(Graphics g) {
-	
-		
-		
-		
-		
-		
+		int Xpos = x*cellSize;
+			int Ypos = y*cellSize;
+		g.setColor(Color.BLACK);
+		g.drawRect(Xpos, Ypos, cellSize, cellSize);
+		if (isAlive) {
+			g.setColor(Color.GREEN);
+			g.fillRect(Xpos, Ypos, cellSize, cellSize);
+			g.setColor(Color.BLACK);
+			g.drawRect(Xpos, Ypos, cellSize, cellSize);
+		}
 	}
 }
