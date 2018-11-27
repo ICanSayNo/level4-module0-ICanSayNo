@@ -50,7 +50,7 @@ public class Cell implements Drawable{
 		g.setColor(Color.BLACK);
 		g.drawRect(Xpos, Ypos, cellSize, cellSize);
 		if (isAlive) {
-			g.setColor(Color.GREEN);
+			g.setColor(new Color((255-((((x+y)/2)+1)*255)/50),((x+1)*255)/50,((y+1)*255)/50));
 			g.fillRect(Xpos, Ypos, cellSize, cellSize);
 			g.setColor(Color.BLACK);
 			g.drawRect(Xpos, Ypos, cellSize, cellSize);
