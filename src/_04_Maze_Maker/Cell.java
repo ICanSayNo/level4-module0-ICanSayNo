@@ -9,7 +9,7 @@ public class Cell {
 	private int x;
 	private int y;
 	
-	private int size = 50;
+	private int size = 20;
 	
 	private boolean visited;
 	
