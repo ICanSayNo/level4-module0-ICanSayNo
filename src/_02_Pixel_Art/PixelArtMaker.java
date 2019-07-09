@@ -3,10 +3,11 @@ package _02_Pixel_Art;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class PixelArtMaker implements MouseListener{
+public class PixelArtMaker implements MouseListener, MouseMotionListener{
 	private JFrame window;
 	private GridInputPanel gip;
 	private GridPanel gp;
@@ -31,6 +32,7 @@ public class PixelArtMaker implements MouseListener{
 		window.add(gp);
 		window.add(csp);
 		gp.repaint();
+		gp.addMouseMotionListener(this);
 		gp.addMouseListener(this);
 		window.pack();
 	}
@@ -54,6 +56,15 @@ public class PixelArtMaker implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		gp.setColor(csp.getSelectedColor());
+		System.out.println(csp.getSelectedColor());
+		System.out.println("hello this is test");
+		gp.clickPixel(e.getX(), e.getY());
+		gp.repaint();
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
@@ -61,5 +72,11 @@ public class PixelArtMaker implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
