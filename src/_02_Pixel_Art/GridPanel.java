@@ -3,18 +3,22 @@ package _02_Pixel_Art;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class GridPanel extends JPanel{
+public class GridPanel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private int windowWidth;
-	private int windowHeight;
+	private int gridWidth;
+	private int gridHeight;
 	private int pixelWidth;
 	private int pixelHeight;
 	private int rows;
 	private int cols;
+	
 	
 	//1. Create a 2D array of pixels. Do not initialize it yet.
 	
@@ -23,17 +27,19 @@ public class GridPanel extends JPanel{
 	private Color color;
 	
 	public GridPanel(int w, int h, int r, int c) {
-		this.windowWidth = w;
-		this.windowHeight = h;
+		
+		this.gridWidth = w;
+		this.gridHeight = h;
 		this.rows = r;
 		this.cols = c;
 		
-		this.pixelWidth = windowWidth / cols;
-		this.pixelHeight = windowHeight / rows;
+		
+		this.pixelWidth = gridWidth / cols;
+		this.pixelHeight = gridHeight / rows;
 		
 		color = Color.BLACK;
 		
-		setPreferredSize(new Dimension(windowWidth, windowHeight));
+		setPreferredSize(new Dimension(gridWidth, gridHeight));
 		
 		//2. Initialize the pixel array using the rows and cols variables.
 		
@@ -75,4 +81,11 @@ public class GridPanel extends JPanel{
 		}
 		
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
