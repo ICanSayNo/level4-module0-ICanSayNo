@@ -5,8 +5,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GridPanel extends JPanel implements ActionListener {
@@ -88,4 +95,39 @@ public class GridPanel extends JPanel implements ActionListener {
 		
 	}
 
+	public void save() {
+		String fileName = JOptionPane.showInputDialog("What would you like to name this file?");
+		try (FileOutputStream fos = new FileOutputStream(new File("src/_02_Pixel_Art/" + fileName + ".dat")); 
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(new SaveArtData(gridWidth, gridHeight, pixelWidth, pixelHeight, rows, cols, pixelList));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void load() {
+		String fileName = JOptionPane.showInputDialog("What file would you like to load?");
+		try (FileInputStream fis = new FileInputStream(new File("src/_02_Pixel_Art/" + fileName + ".dat")); 
+				ObjectInputStream ois = new ObjectInputStream(fis)) {
+			SaveArtData sd = (SaveArtData) ois.readObject();
+			gridHeight = sd.gridHeight;
+			gridWidth = sd.gridWidth;
+			pixelWidth = sd.pixelWidth;
+			pixelHeight = sd.pixelHeight;
+			pixelList = sd.pixelList;
+			//System.out.println(sd.rows + "  " + sd.cols + "\n");
+			//for (int i = 0; i < rows; i++) {
+			//	for (int j = 0; j < cols; j++) {
+			//		System.out.println(i + "  " + j + "  " + sd.pixelList[i][j].color);
+			//		pixelList[i][j].color = sd.pixelList[i][j].color;
+			//	}
+			//}
+			repaint();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// This can occur if the object we read from the file is not
+			// an instance of any recognized class
+			e.printStackTrace();
+		}
+	}
 }

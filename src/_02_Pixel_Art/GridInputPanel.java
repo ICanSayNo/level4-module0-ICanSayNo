@@ -68,5 +68,4 @@ public class GridInputPanel extends JPanel{
 		JOptionPane.showMessageDialog(null, "Be sure all fields are complete with positive numbers.", "ERROR", 0);
 	}
 	
-	
 }

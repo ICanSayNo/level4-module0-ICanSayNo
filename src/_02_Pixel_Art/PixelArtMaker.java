@@ -102,7 +102,7 @@ public class PixelArtMaker implements MouseListener, MouseMotionListener, Action
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(saveButton)) {
-			
+			gp.save();
 			
 		}
 		else if (e.getSource().equals(clearButton)) {
@@ -110,8 +110,8 @@ public class PixelArtMaker implements MouseListener, MouseMotionListener, Action
 			
 		}
 		else if (e.getSource().equals(loadButton)) {
-			
-			
+			gp.load();
+			window.pack();
 		}
 	}
 }
