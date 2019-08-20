@@ -111,6 +111,7 @@ public class PixelArtMaker implements MouseListener, MouseMotionListener, Action
 		}
 		else if (e.getSource().equals(loadButton)) {
 			gp.load();
+			
 			window.pack();
 		}
 	}

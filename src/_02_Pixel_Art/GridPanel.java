@@ -114,7 +114,10 @@ public class GridPanel extends JPanel implements ActionListener {
 			pixelWidth = sd.pixelWidth;
 			pixelHeight = sd.pixelHeight;
 			pixelList = sd.pixelList;
-			//System.out.println(sd.rows + "  " + sd.cols + "\n");
+			rows = sd.rows;
+			cols = sd.cols;
+			
+			System.out.println(sd.rows + "  " + sd.cols + "\n");
 			//for (int i = 0; i < rows; i++) {
 			//	for (int j = 0; j < cols; j++) {
 			//		System.out.println(i + "  " + j + "  " + sd.pixelList[i][j].color);
@@ -124,10 +127,12 @@ public class GridPanel extends JPanel implements ActionListener {
 			repaint();
 		} catch (IOException e) {
 			e.printStackTrace();
+			//return null;
 		} catch (ClassNotFoundException e) {
 			// This can occur if the object we read from the file is not
 			// an instance of any recognized class
 			e.printStackTrace();
+			//return null;
 		}
 	}
 }
