@@ -104,6 +104,16 @@ public class GridPanel extends JPanel implements ActionListener {
 			e.printStackTrace();
 		}
 	}
+	
+	public void clear() {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				pixelList[i][j].color=color.white;
+				repaint();
+			}
+		}
+	}
+	
 	public void load() {
 		String fileName = JOptionPane.showInputDialog("What file would you like to load?");
 		try (FileInputStream fis = new FileInputStream(new File("src/_02_Pixel_Art/" + fileName + ".dat")); 
@@ -116,6 +126,7 @@ public class GridPanel extends JPanel implements ActionListener {
 			pixelList = sd.pixelList;
 			rows = sd.rows;
 			cols = sd.cols;
+			setPreferredSize(new Dimension(gridWidth, gridHeight));
 			
 			System.out.println(sd.rows + "  " + sd.cols + "\n");
 			//for (int i = 0; i < rows; i++) {

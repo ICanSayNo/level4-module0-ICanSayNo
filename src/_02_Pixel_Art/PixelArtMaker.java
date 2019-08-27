@@ -106,7 +106,7 @@ public class PixelArtMaker implements MouseListener, MouseMotionListener, Action
 			
 		}
 		else if (e.getSource().equals(clearButton)) {
-			
+			gp.clear();
 			
 		}
 		else if (e.getSource().equals(loadButton)) {
